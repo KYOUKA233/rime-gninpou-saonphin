@@ -1,0 +1,280 @@
+# Rime schema
+# encoding: utf-8
+
+schema:
+  schema_id: gninpou_saonphin
+  name: 寧波（雙拼）
+  version: "0.1.0"
+  author:
+    - Shin Zoqchiuq <shinzoqchiuq@outlook.com>
+  description: |
+    寧波（雙拼）
+    https://www.wugniu.com/
+    https://github.com/ionkaon/rime-gninpou-saonphin/
+    按鍵: 聲母
+    P: p/c撮口
+    O: ph/ch撮口
+    B: b/j撮口
+    M: m/gn撮口
+    F: f/sh撮口
+    V: v
+    T: t/tsyu
+    R: th/tshyu
+    D: d/dzyu
+    N: (g)n/syu
+    L: l/zyu
+    C: ts/c
+    E: tsh/ch
+    J: dz/j
+    S: s/sh
+    Z: z/zh
+    K: k
+    A: kh
+    G: g
+    U: ng
+    H: h
+    Q: ∅
+    X: gh
+    W: w
+    I: i
+    Y: y
+    按鍵: 韻母
+    Y: y/ie/yun
+    V: yu/iu/uaon/yuq
+    A: a
+    K: au
+    O: o
+    E: e/ioq/iaon
+    T: iaq/uo/iuq
+    J: ae
+    R: oe/un
+    Z: ei
+    P: ou
+    B: eu
+    X: an
+    H: aon
+    F: en
+    S: on
+    L: aq
+    M: oq
+    I: i
+    U: u
+    W: ia/ua/iun
+    C: iau/uae
+    Q: ieu/uei/io
+    D: ian/uan/ion
+    N: in/uen
+    G: iq/uaq
+  dependencies:
+    - luna_pinyin
+    - stroke
+
+switches:
+  - name: ascii_mode
+    reset: 0
+    states: [ 中文, 西文 ]
+  - name: full_shape
+    states: [ 半角, 全角 ]
+  - name: simplification
+    reset: 1
+    states: [ 漢字, 汉字 ]
+  - name: ascii_punct
+    states: [ 。，, ．， ]
+
+engine:
+  processors:
+    - ascii_composer
+    - recognizer
+    - key_binder
+    - speller
+    - punctuator
+    - selector
+    - navigator
+    - express_editor
+  segmentors:
+    - ascii_segmentor
+    - matcher
+    - affix_segmentor@luna_pinyin # 自定義tag luna_pinyin
+    - affix_segmentor@stroke      # 自定義tag stroke
+    - abc_segmentor
+    - punct_segmentor
+    - fallback_segmentor
+  translators:
+    - punct_translator
+    - script_translator              # 主翻譯器
+    - script_translator@luna_pinyin  # 用於反查的luna_pinyin翻譯器
+    - table_translator@stroke        # 用於反查的stroke翻譯器
+    - table_translator@custom_phrase # 用戶短語
+  filters:
+    - simplifier
+    - uniquifier
+    - reverse_lookup_filter@reverse_lookup # 反查濾鏡
+
+speller:
+  alphabet: abcdefghijklmnopqrstuvwxyz
+  delimiter: " '"
+  algebra:
+    - xform/^([bcdfghjklpqstvwxyz])$/$1_/
+    # 還原城區音系
+    - xform/(\w*)-(\w*)/$1/
+    # 清濁鼻邊音
+    - xform/(m|n|l)h/$1/
+    - xform/nk/ng/
+    - xform/kn/gn/
+    - xform/gn/n/
+
+    - xform/ts(h?yu[nq])/t$1/
+    - xform/dz(yu[nq])/d$1/
+    - xform/s(yu[nq])/n$1/
+    - xform/z(yu[nq])/l$1/
+
+    - xform/ciaon/PE/
+
+    - xform/c(h?i[uo][nq]?|h?ie\b)/p$1/
+    - xform/dz(i[uo][nq]?|ie\b)/b$1/
+    - xform/n(i[uo][nq]?|ie\b)/m$1/
+    - xform/sh(i[uo][nq]?|ie\b)/f$1/
+    - xform/zh(i[uo][nq]?|ie\b)/v$1/
+
+    - xform/kiq/KY/
+    - xform/\bn\b/ng/
+    - xform/\b(m|ng)\b/$1Y/
+    - xform/\ber\b/XY/
+
+    - xform/ph/O/
+    - xform/th/R/
+    - xform/ts/C/
+    - xform/[Cc]h/E/
+    - xform/dz/J/
+    - xform/(s|z)h/$1/
+    - xform/kh/A/
+    - xform/ng/U/
+    - xform/\b([aeou])/Q$1/
+    - xform/gh/X/
+    - xform/w(?!u)/Xu/
+    - xform/w/X/
+    - xform/\bi/I/
+    - xform/\by/Y/
+    - xform/(I|Y)(n|q|un|uq)/$1i$2/
+
+    - xform/(ie|yun)\b/Y/
+    - xform/(iu|uaon|yuq)\b/V/
+    - xform/yu\b/V/
+    - xform/(ia|ua|iun)\b/W/
+    - xform/(iau|uae)\b/C/
+    - xform/(ieu|uei|io)\b/Q/
+    - xform/(ian|uan|ion)\b/D/
+    - xform/(in|uen)\b/N/
+    - xform/(iq|uaq)\b/G/
+    - xform/au\b/K/
+    - xform/ioq\b/E/
+    - xform/(iaq|uo|iuq)\b/T/
+    - xform/ae\b/J/
+    - xform/(oe|un)\b/R/
+    - xform/ei\b/Z/
+    - xform/ou\b/P/
+    - xform/eu\b/B/
+    - xform/an\b/X/
+    - xform/aon\b/H/
+    - xform/en\b/F/
+    - xform/on\b/S/
+    - xform/aq\b/L/
+    - xform/oq\b/M/
+    - xform/\bI\b/II/
+
+    - derive/Xu/WU/ # wu
+    - derive/XR/WR/ # wun
+    - derive/XV/WV/ # waon
+    - derive/XW/WW/ # wa
+    - derive/XH/WH/ # wae
+    - derive/XQ/WQ/ # wei
+    - derive/XD/WD/ # wan
+    - derive/XN/WN/ # wen
+    - derive/XG/WG/ # waq
+    - derive/XT/WT/ # wo
+
+    - derive/WV/WH/ # waon
+    - derive/WW/WA/ # wa
+    - derive/WH/WJ/ # wae
+    - derive/WQ/WZ/ # wei
+    - derive/WD/WX/ # wan
+    - derive/WN/WF/ # wen
+    - derive/WG/WL/ # waq
+    - derive/WT/WO/ # wo
+
+    - derive/(Y|I)U/$1V/ # iu yu
+    - derive/(Y|I)V/$1U/ # iu yu
+    - derive/(Y|I)K/$1C/ # iau yau
+    - derive/(Y|I)C/$1K/ # iau yau
+    - derive/(Y|I)B/$1Q/ # ieu yeu
+    - derive/(Y|I)Q/$1B/ # ieu yeu
+    - derive/(Y|I)X/$1D/ # ian yan
+    - derive/(Y|I)D/$1X/ # ian yan
+    - derive/(Y|I)E/$1Y/ # ie ye
+    - derive/(Y|I)Y/$1E/ # ie ye
+    - derive/(Y|I)W/$1R/ # iun yun
+    - derive/(Y|I)R/$1W/ # iun yun
+
+    - xlit/ABCDEFGHIJKLMNOPQRSTUVWXYZ/abcdefghijklmnopqrstuvwxyz/
+
+# 主翻譯器 寧波吳拼
+translator:
+  dictionary: wugniu_gninpou # 調取詞典wugniu_gninpou
+  prism: gninpou_saonphin    # 根據拼寫運算生成棱鏡文件gninpou_saonphin
+  spelling_hints: 5          # 標註拼音
+  comment_format:
+    __include: speller/algebra
+
+# 副翻譯器1 朙月拼音
+luna_pinyin:
+  tag: luna_pinyin
+  dictionary: luna_pinyin # 調取詞典luna_pinyin
+  enable_user_dict: false    # 關閉用戶詞典
+  prefix: '`'                # 引導鍵「`」
+  suffix: "'"                # 結束鍵「'」
+  tips: 〔反查〕             # 輸入前提示〔反查〕
+  closing_tips: 〔寧波雙拼〕
+  preedit_format:
+    - xform/(\w*)-(\w*)/$1/
+
+# 副翻譯器2 五筆畫
+stroke:
+  tag: stroke
+  dictionary: stroke      # 調取詞典stroke
+  enable_user_dict: false # 關閉用戶詞典
+  prefix: '`'             # 引導鍵「`」
+  suffix: "'"             # 結束鍵「'」
+  tips: 〔反查〕          # 輸入前提示〔反查〕
+  closing_tips: 〔寧波雙拼〕
+  preedit_format:
+    - xlit/hspnz/一丨丿丶乙/
+
+# 副翻譯器3 用戶短語
+custom_phrase:
+  dictionary: ""
+  user_dict: custom_phrase # 用戶詞典名
+  db_class: stabledb       # 詞典類型爲只讀格式
+  enable_completion: false
+  enable_sentence: false
+  initial_quality: 1
+
+# 反查濾鏡
+reverse_lookup:
+  tags: [luna_pinyin, stroke] # 掛在翻譯器luna_pinyin和stroke上
+  overwrite_comment: true     # 覆蓋其他提示
+  dictionary: wugniu_gninpou  # 反查所得爲寧波雙拼
+  comment_format:
+    __include: speller/algebra
+
+punctuator:
+  import_preset: symbols # 句讀處理器，統一從外部導入
+
+key_binder:
+  import_preset: default # 快捷鍵，統一從外部導入
+
+recognizer:
+  import_preset: default # 特殊規則輸入碼，統一從外部導入
+  patterns:
+    punct: "^/([0-9]|10|[A-Za-z]+)$" # 按 / 輸入符號
+    luna_pinyin: "`[hspnz]*[aeiouv][a-z]*'?$|`[a-gi-moqrt-y][a-z]*'?$"
+    stroke: "`[hspnz]+'?$"
